@@ -4,7 +4,20 @@
   become: true
 
   tasks:
-  - name: Install htop
-    package:
-      name: htop
-
+  # Updating the wallpaper
+  - name: Copy wallpaper file.
+    copy:
+      src: files/wallpaper.png
+      dest: /usr/share/backgrounds/ansible-wallpaper.png
+      owner: root
+      group: root
+  # Setting the wallpaper
+  - name: Setting the wallpaper.
+    dconf:
+      key: "/org/gnome/desktop/background/picture-uri"
+      value: "'file:///usr/share/background/ansible-wallpaper.png'"
+  # Setting the Wallpaper options
+  - name: Set wallpaper position.
+    dconf:
+      key: "/org/gnome/desktop/background/picture-options"
+      value: "'zoom'"
