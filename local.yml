@@ -13,11 +13,13 @@
       group: root
   # Setting the wallpaper
   - name: Setting the wallpaper.
+    become_user: rhysmg
     dconf:
       key: "/org/gnome/desktop/background/picture-uri"
       value: "'file:///usr/share/background/ansible-wallpaper.png'"
   # Setting the Wallpaper options
   - name: Set wallpaper position.
+    become_user: rhysmg
     dconf:
       key: "/org/gnome/desktop/background/picture-options"
       value: "'zoom'"
